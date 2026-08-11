@@ -3,7 +3,7 @@ title: 'Getting Started with the GitHub Copilot app'
 description: 'Learn about the GitHub Copilot app, a desktop experience built for agent-native development. Understand its key features and who it''s for.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-06-17
+lastUpdated: 2026-08-11
 estimatedReadingTime: '8 minutes'
 tags:
   - copilot-app
@@ -58,14 +58,14 @@ Automations run in the context of a repository, so they can access issues, pull 
 
 ### Isolated Worktrees for Parallel Work
 
-Each session the Copilot app creates runs in its own **git worktree**—a real, isolated copy of your branch. This is critical for parallel agent work:
+Each session the Copilot app creates runs in its own **git worktree** by default—a real, isolated copy of your branch. This is critical for parallel agent work:
 
 - Multiple agents can work on different tasks simultaneously without stepping on each other
 - Each agent has its own branch, its own environment, and its own changes
 - No manual branch juggling or cleanup required—the app handles it all
 - You can pick up a session from any device, on any worktree
 
-This makes it easy to dispatch multiple agents and trust they won't interfere with each other.
+This makes it easy to dispatch multiple agents and trust they won't interfere with each other. Orchestrators can also create child sessions that run in a project's existing local checkout instead of always spinning up a new isolated worktree, which is useful when a follow-up task needs to build on files already present on disk.
 
 ### Canvases
 
@@ -278,10 +278,25 @@ Enable Agent Merge to automate routine PR workflows:
 4. When the PR is created, Agent Merge monitors it
 5. It runs CI, waits for reviews, addresses feedback, and merges when ready
 
+## Recent Updates
+
+The Copilot app ships frequent releases. Notable recent additions include:
+
+- **Background-friendly by default**: Closing the main window now keeps the app running in the background instead of quitting, with tray/dock support to bring it back.
+- **CLI-aligned permission modes**: Permission modes (`manual`, `assisted`, `allow-all`) are now aligned with Copilot CLI, while keeping the app's own slash commands like `/permissions` and `/yolo`.
+- **Session grid and side chats for everyone**: Viewing multiple sessions at once, side chats in the review panel, and automatic session renaming to the pull request title are now available to all users.
+- **Faster session resume**: Large sessions open much faster, with older messages loading in the background instead of freezing the app.
+- **Repo rename/transfer healing**: My Work automatically detects when a repository was renamed or transferred on GitHub and updates your local project to match.
+- **Flexible child sessions**: Orchestrators can create child sessions in a project's existing local checkout instead of always creating a new isolated worktree.
+
 ## Next Steps
 
 - **Set Up Your Repository**: [Copilot Configuration Basics](../copilot-configuration-basics/) — Add custom agents, skills, and instructions
 - **Understand Agent Skills**: [Creating Effective Skills](../creating-effective-skills/) — Build reusable task guidance
 - **Automate with Hooks**: [Automating with Hooks](../automating-with-hooks/) — Add guardrails to autonomous work
+
+## Further Reading
+
+- [GitHub Copilot app changelog](https://github.com/github/app/blob/main/changelog.md) — Full release history and recent feature updates
 
 ---
