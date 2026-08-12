@@ -3,7 +3,7 @@ title: 'Copilot Configuration Basics'
 description: 'Learn how to configure GitHub Copilot at user, workspace, and repository levels to optimize your AI-assisted development experience.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-08-06
+lastUpdated: 2026-08-12
 estimatedReadingTime: '10 minutes'
 tags:
   - configuration
@@ -445,6 +445,8 @@ These files follow the same format as `config.json` and are loaded after the glo
 
 The model picker opens in a **full-screen view** with inline reasoning effort adjustment. Use the **← / →** arrow keys to change the reasoning effort level (`low`, `medium`, `high`) directly from the picker without leaving the session. The current reasoning effort level is also displayed in the model header (e.g., `claude-sonnet-4.6 (high)`) so you always know which level is active.
 
+**Grouped model list** *(v1.0.79+)*: The model picker now groups available models into **Recent**, **Recommended**, **New**, and other sections instead of a single flat list. Press **Shift+Tab** to switch between grouping views, making it easier to quickly find a model you've used before or discover newly added ones.
+
 **Auto mode and server-side model routing** (v1.0.43+): When you select **Auto** as your model, the CLI uses server-side model routing for real-time model selection. Instead of locking in a single model at session start, Auto mode evaluates each request and routes it to the most appropriate model dynamically. This means straightforward questions can be handled by a faster model while complex reasoning tasks are automatically escalated — without you needing to switch models manually.
 
 **Model family aliases** (v1.0.64+): Instead of typing a full model name, you can use short family aliases in the model setting: `opus`, `sonnet`, `haiku` (Anthropic), and `gpt`, `gemini` (Google/OpenAI). The CLI resolves the alias to the latest available model in that family. This is especially useful in scripts or configuration files where you want to track the best model in a family without hardcoding a version string. Recent models available include **Claude Opus 5** (v1.0.75+), the latest in Anthropic's Opus family for the most demanding tasks, and **Grok 4.5** (v1.0.76+) from xAI.
@@ -588,6 +590,8 @@ Unlike `/worktree` (which keeps the current conversation), `/new-worktree` is th
 ```
 /worktree new my-feature-branch
 ```
+
+**`worktreeBaseRef` setting** *(v1.0.79+)*: This setting controls whether `/worktree`, `/worktree new`, and the `--worktree` startup flag start from your current `HEAD` or from the remote default branch. All three now default to starting from `HEAD`; previously `--worktree` started from the remote default branch instead, which could surprise you with a worktree that didn't include your local uncommitted context. Set `worktreeBaseRef` explicitly in `/settings` if you want the old remote-default-branch behavior.
 
 The `/every` command (also available as `/loop` since v1.0.64) schedules a recurring prompt to run automatically at a specified interval. The companion `/after` command runs a prompt once after a specified delay. Both are useful for self-paced automation — polling for results, periodically summarizing progress, or triggering other slash commands on a timer:
 
@@ -785,6 +789,14 @@ copilot --plan          # start in plan mode (propose without executing)
 ```
 
 This is useful in scripts or CI pipelines where you want the CLI to immediately begin working in a specific mode without an interactive prompt.
+
+**Combining plan and autopilot** *(v1.0.79+)*: Pass both `--plan` and `--mode autopilot` together to have the CLI draft a plan first, then implement it automatically without waiting for approval once the plan is ready:
+
+```bash
+copilot --plan --mode autopilot -p "Add rate limiting to the API"
+```
+
+This is useful when you want the safety of an up-front plan but don't want to manually approve it before implementation begins.
 
 The `--max-autopilot-continues` flag controls how many times Copilot can automatically continue in autopilot mode before pausing for confirmation. The default is 5:
 

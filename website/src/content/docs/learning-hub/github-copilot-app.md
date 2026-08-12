@@ -3,7 +3,7 @@ title: 'Getting Started with the GitHub Copilot app'
 description: 'Learn about the GitHub Copilot app, a desktop experience built for agent-native development. Understand its key features and who it''s for.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-06-17
+lastUpdated: 2026-08-12
 estimatedReadingTime: '8 minutes'
 tags:
   - copilot-app
@@ -76,6 +76,12 @@ This makes it easy to dispatch multiple agents and trust they won't interfere wi
 - This makes it easy to see exactly what an agent is doing and step in when needed
 
 For a hands-on guide to building canvases with `/create-canvas`, see [Working with Canvas Extensions](../working-with-canvas-extensions/).
+
+### Side Chat and Session Tabs
+
+Each session now organizes work into **Files**, **Plan**, and **background task** tabs, with terminals and file mentions scoped to the chat's actual working directory—so you can jump between what changed, what's planned, and what's running in the background without losing context.
+
+If a question comes up mid-session that you want to explore without derailing the current task, use **Ask in Side chat** to open a side conversation. This lets you investigate options or ask follow-up questions in parallel, then return to answer the original question in the main session once you're ready.
 
 ### Agent Merge
 
