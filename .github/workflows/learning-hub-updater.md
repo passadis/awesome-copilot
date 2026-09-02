@@ -22,6 +22,13 @@ safe-outputs:
     labels: [automated-update, copilot-updates]
     title-prefix: "[bot] "
     base-branch: main
+pre-agent-steps:
+  - name: Workaround Copilot CLI tool-cache ENOENT (github/gh-aw-firewall#7130)
+    run: |
+      copilot_cache_path="$(command -v copilot || true)"
+      if [ -n "$copilot_cache_path" ] && [ ! -e /usr/local/bin/copilot ]; then
+        sudo ln -sf "$copilot_cache_path" /usr/local/bin/copilot
+      fi
 ---
 
 # Check for Awesome GitHub Copilot Updates
