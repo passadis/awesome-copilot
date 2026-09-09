@@ -3,7 +3,7 @@ title: 'Getting Started with the GitHub Copilot app'
 description: 'Learn about the GitHub Copilot app, a desktop experience built for agent-native development. Understand its key features and who it''s for.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-09-02
+lastUpdated: 2026-09-09
 estimatedReadingTime: '8 minutes'
 tags:
   - copilot-app
@@ -56,6 +56,8 @@ The Copilot app includes built-in automations that can run scheduled tasks for y
 
 Automations run in the context of a repository, so they can access issues, pull requests, and code. You can also choose whether they run as a plan, an interactive session, or on autopilot.
 
+> **Persistent autopilot goals (v1.1.15+)**: Use the `/goal` command in a local session to set a persistent objective for autopilot to work toward across multiple turns, instead of re-stating your intent with every message. The Autopilot status panel shows your last prompt as the inferred objective, so you can confirm the agent is still on track.
+
 ### Isolated Worktrees for Parallel Work
 
 Each session the Copilot app creates runs in its own **git worktree**—a real, isolated copy of your branch. This is critical for parallel agent work:
@@ -91,6 +93,10 @@ For a hands-on guide to building canvases with `/create-canvas`, see [Working wi
 - Create, edit, or remove your own **personal skills** directly in the app, without hand-authoring a `SKILL.md` file
 
 This makes Customize a good starting point if you want to extend the app's capabilities but don't need the full `copilot plugin` CLI workflow described in [Installing and Using Plugins](../installing-and-using-plugins/).
+
+> **Install MCP servers via deep link (v1.1.15+)**: A deep link can now point directly at an MCP server. Opening one shows a prefilled review form summarizing the server's configuration so you can confirm before it's added — useful for sharing a one-click install link for a team's internal MCP server instead of walking teammates through manual JSON setup.
+
+> **Quick settings access (v1.1.16+)**: Run `/settings` from the message composer to jump straight into the app's settings, without leaving your current session to find the menu.
 
 ### Agent Merge
 
