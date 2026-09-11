@@ -3,7 +3,7 @@ title: 'Getting Started with the GitHub Copilot app'
 description: 'Learn about the GitHub Copilot app, a desktop experience built for agent-native development. Understand its key features and who it''s for.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-09-02
+lastUpdated: 2026-09-11
 estimatedReadingTime: '8 minutes'
 tags:
   - copilot-app
@@ -108,6 +108,26 @@ Agent Merge also understands **stacked pull requests**: it shows a stack summary
 ### Requesting Code Reviews
 
 From the app, you can request a Copilot code review on a pull request—and re-request a review even from reviewers who already responded—without leaving the session. This keeps the review loop inside the same workspace where the change was made.
+
+### Goal Mode
+
+**Goal Mode** *(v1.1.15+)* lets you set a persistent objective for autopilot to work toward in local sessions, instead of a single one-off prompt. Type `/goal` in the composer to define the objective; the app then keeps autopilot focused on that goal across multiple turns.
+
+- A **Goal pill** in the composer shows live status (Active, Paused, Done) and expands to reveal the objective, a completion summary, the pause reason (if paused), turn count, and AI Credits usage *(v1.1.17+)*.
+- The `/autopilot` command now sets the same persistent objective as `/goal`, rather than only switching the session mode *(v1.1.17+)*.
+
+Use Goal Mode when you want an agent to keep iterating toward a larger outcome (for example, "get this PR's CI green and address all review feedback") without having to re-prompt it after every turn.
+
+### Recent Additions
+
+A few smaller but notable features have shipped recently:
+
+- **`/settings`** *(v1.1.16+)*: Open app settings directly from the message composer without leaving your session.
+- **Screenshot annotations** *(v1.1.16+/17+)*: Draw freehand annotations on screenshots with a new pencil tool, enabled by default after capturing a browser region.
+- **MCP servers via deep link** *(v1.1.15+)*: Install an MCP server by opening a deep link, which shows a prefilled review form for confirmation before adding it.
+- **Editable issues and PRs** *(v1.1.18+)*: Edit issue and pull request titles and descriptions, and edit, delete, or hide comments, directly from the app.
+- **"Fix with instructions"** *(v1.1.18+)*: Pull request fix buttons now have a chevron option to add guidance before running a fix.
+- **Attach images/videos to PR descriptions** *(v1.1.15+)*: Paste, drag, or select files to attach images and videos when writing a pull request description.
 
 ## Who is the Copilot app for?
 
@@ -306,5 +326,10 @@ Enable Agent Merge to automate routine PR workflows:
 - **Set Up Your Repository**: [Copilot Configuration Basics](../copilot-configuration-basics/) — Add custom agents, skills, and instructions
 - **Understand Agent Skills**: [Creating Effective Skills](../creating-effective-skills/) — Build reusable task guidance
 - **Automate with Hooks**: [Automating with Hooks](../automating-with-hooks/) — Add guardrails to autonomous work
+
+## Further Reading
+
+- [GitHub Copilot app changelog](https://github.com/github/app/blob/main/changelog.md) — Release notes for every app version, including Goal Mode, Customize, and Agent Merge updates
+- [GitHub Copilot app](https://github.com/features/ai/github-app) — Download and product overview
 
 ---

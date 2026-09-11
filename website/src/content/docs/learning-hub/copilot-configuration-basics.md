@@ -3,7 +3,7 @@ title: 'Copilot Configuration Basics'
 description: 'Learn how to configure GitHub Copilot at user, workspace, and repository levels to optimize your AI-assisted development experience.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-09-07
+lastUpdated: 2026-09-11
 estimatedReadingTime: '10 minutes'
 tags:
   - configuration
@@ -770,6 +770,14 @@ The `/autopilot` command (v1.0.45+) is a quick in-session toggle that switches b
 ```
 
 Use `/autopilot` when you want to flip between supervised and unsupervised operation mid-session without typing out the full `/allow-all on` or `/allow-all off` commands.
+
+> **Persistent objectives with `/goal` (v1.0.55+)**: `/autopilot <objective>` (with `/goal` as an alias) sets a persistent objective that keeps autopilot focused on a specific outcome across multiple turns, instead of only toggling the mode:
+>
+> ```
+> /goal fix all failing tests and open a PR
+> ```
+>
+> The GitHub Copilot app builds on the same concept with its **Goal Mode** — see [Getting Started with the GitHub Copilot app](../github-copilot-app/#goal-mode) for the desktop experience, including the Goal pill that shows live status, completion summaries, and AI Credits usage.
 
 > **Enhanced autopilot (v1.0.64+)**: When autopilot mode is active — including when launched with `--autopilot` at startup or during automatic continuation turns — the agent automatically handles elicitation dialogs, `ask_user` prompts, sampling requests, and permission prompts without surfacing them as interactive dialogs. This means long-running automated sessions can proceed end-to-end without manual confirmation steps.
 
