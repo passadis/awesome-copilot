@@ -3,7 +3,7 @@ title: 'Copilot Configuration Basics'
 description: 'Learn how to configure GitHub Copilot at user, workspace, and repository levels to optimize your AI-assisted development experience.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-09-07
+lastUpdated: 2026-09-14
 estimatedReadingTime: '10 minutes'
 tags:
   - configuration
@@ -431,8 +431,12 @@ CLI settings use **camelCase** naming. Key settings added in recent releases:
 | `stayInAutopilot` | Keep the CLI in autopilot mode after an autopilot task completes, instead of returning to interactive mode (v1.0.69+) |
 | `defaultMode` | Startup mode for new interactive sessions (e.g., `interactive`, `autopilot`, `plan`) (v1.0.81+) |
 | `defaultPermissionMode` | Default approval behaviour for new interactive sessions, independent from `defaultMode` (v1.0.81+) |
+| `editorMode` | Composer editing mode; set to `"vim"` for modal editing, toggled at any time with `/vim` (v1.0.84+) |
+| `taskbarPresence` | Set to `false` to disable Windows taskbar session status indicators (v1.0.84+) |
 
 > **Note**: Older snake_case names (e.g., `include_gitignored`, `auto_updates_channel`) are still accepted for backward compatibility, but camelCase is now the preferred format.
+
+> **CLI parsing rewrite (v1.0.84+)**: Command-line argument parsing moved from Commander to a Rust-based grammar. Error and help text wording has changed accordingly, `copilot login --host` now works correctly, and `--max-autopilot-continues` no longer accepts scientific notation. Shell completions are now generated from this same grammar, so `copilot <TAB>` offers root flags alongside subcommands, and each subcommand only completes its own options.
 
 > **Session restore after a crash (v1.0.81+)**: If the CLI is interrupted unexpectedly — a crash or a machine restart — startup now offers to restore any sessions that were still open, so you don't have to reopen each terminal by hand.
 
@@ -707,6 +711,20 @@ The `/env` command shows all loaded environment details — instructions, MCP se
 /env
 ```
 
+The `/config` command *(v1.0.84+)* opens a sidebar configuration screen directly in the CLI, giving you a menu-driven way to review and change settings without hand-editing `~/.copilot/config.json`:
+
+```
+/config
+```
+
+**Vim mode** *(v1.0.84+)*: Toggle modal (Vim-style) editing in the composer with `/vim`, or set it permanently with the `editorMode` setting (`"editorMode": "vim"`). The active mode is shown while you type, so you always know whether you're in insert or normal mode:
+
+```
+/vim             # toggle Vim mode for the current session
+```
+
+**Session and memory import** *(v1.0.84+)*: The CLI can import sessions and memory using a semantic JSONL interchange format, making it easier to migrate history or memory data between machines or tools that support the same format. See `copilot --help` for the current import command syntax.
+
 The `/context` command shows a visualization of the current conversation's context window usage — how many tokens are consumed and how much headroom remains:
 
 ```
@@ -846,6 +864,10 @@ These flags apply only to the current invocation — your persisted sandbox pref
 **`worktreeBaseRef` setting** *(v1.0.79-8+)*: Controls whether `/worktree`, `/worktree new`, and the `--worktree` startup flag create the new worktree from `HEAD` or from the remote default branch. All three now default to `HEAD`; previously `--worktree` defaulted to starting from the remote default branch. Set this in `/settings` if you want worktrees to branch from the remote default instead.
 
 > **Breaking change — sandbox network isolation (v1.0.83+)**: On macOS and Linux, sandboxed commands can no longer reach services running on your own machine, including a server the sandboxed command itself starts on `127.0.0.1`. This means test suites that bind a local port will fail inside the sandbox. Turn on **Allow local network** in `/sandbox` to restore access to localhost. On Linux, sandboxing also now requires `slirp4netns`, `nsenter`, `iptables`, `ip6tables`, `iptables-restore`, and `ip6tables-restore` on `PATH` — install these if sandboxed commands start failing to launch. Additionally, Linux sandboxes now restrict network egress to the configured HTTP(S) proxy when one is set; this proxy mode requires `slirp4netns`, `util-linux` 2.35+, `iptables`, and `/dev/net/tun` access.
+
+**Network host allow/deny rules** *(v1.0.84+)*: `/sandbox` now supports adding specific network host allow/deny rules without having to replace your entire configured upstream proxy — useful when a sandboxed task needs access to one additional external host while keeping the rest of your network policy intact.
+
+**Session-scoped sandbox disable** *(v1.0.84+)*: When your organization's policy allows a bypass, `/sandbox disable` turns the sandbox off for the rest of the current session (rather than only for a single command), and `/sandbox status` and `/settings` show clearly when sandboxing has been disabled for the session in this way.
 
 The `--attachment` flag (available in prompt mode, `-p`) lets you attach files — images or native documents — to the initial prompt in non-interactive mode:
 
