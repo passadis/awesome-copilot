@@ -3,7 +3,7 @@ title: 'Copilot Configuration Basics'
 description: 'Learn how to configure GitHub Copilot at user, workspace, and repository levels to optimize your AI-assisted development experience.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-09-07
+lastUpdated: 2026-09-15
 estimatedReadingTime: '10 minutes'
 tags:
   - configuration
@@ -481,6 +481,8 @@ The `/settings` command (v1.0.61+) opens an interactive dialog to browse and edi
 
 The settings dialog supports search — type to filter settings by name. Changes take effect immediately.
 
+**`/config` sidebar** *(v1.0.84+)*: The `/config` command opens a dedicated sidebar configuration screen alongside your conversation, giving you a persistent view of settings while you keep working — an alternative to the modal `/settings` dialog for users who want to tweak options without losing sight of the current session.
+
 *(v1.0.70+)* The `/settings` command and the `/model` command both support **`--repo` and `--local` flags** for explicitly scoping which layer of settings you want to view or edit:
 
 ```
@@ -591,7 +593,7 @@ In v1.0.66+, you can pass a task description to `/worktree` to name the branch f
 
 This creates a branch named from your task description and begins working on it immediately, making it easy to spin up parallel work without stopping to think of a branch name.
 
-After the command runs, the session is inside the new worktree. Use this when you want to work on a second task in parallel without stashing changes or opening a new terminal. In v1.0.64+ you can also use the experimental `--worktree` flag at startup (`copilot -w [name]`) to create or reuse a worktree under `<repo>.worktrees/` before the session begins.
+After the command runs, the session is inside the new worktree. Use this when you want to work on a second task in parallel without stashing changes or opening a new terminal. In v1.0.64+ you can also use the `--worktree` flag at startup (`copilot -w [name]`) to create or reuse a worktree under `<repo>.worktrees/` before the session begins. As of v1.0.84, `/worktree`, `/move`, and the `--worktree` startup flag no longer require experimental mode — they're available to everyone by default.
 
 The `/new-worktree` command *(v1.0.78+, experimental)* creates a new worktree and starts a **fresh conversation** in it — without inheriting the current session's history. This is useful when you want a completely clean slate for a new task in a parallel branch:
 
@@ -645,7 +647,11 @@ The `/share html` command exports the current session — including conversation
 /share html
 ```
 
-The exported file contains everything needed to view the session without a network connection and can be shared with teammates or stored for later reference. This complements `/share` (which shares via URL) for cases where an offline or attached format is preferred.
+The exported file contains everything needed to view the session without a network connection and can be shared with teammates or stored for later reference. This complements `/share` (which shares via URL) for cases where an offline or attached format is preferred. Since v1.0.84, `/share=~/notes.md` (and other paths beginning with `~/`) correctly write the exported file into your home directory instead of creating a literal `~` folder in the current directory.
+
+**Semantic session and memory import** *(v1.0.84+)*: The CLI can import session and memory data from the semantic JSONL interchange format, making it possible to bring conversation history and learned memory into the CLI from other tools that emit this format. This is useful for migrating history when adopting Copilot CLI or consolidating memory captured elsewhere.
+
+**Vim mode for the composer** *(v1.0.84+)*: Vim mode is now available to everyone — no experimental flag required. Turn it on with `/vim`, or set `editorMode` to `vim` in `/settings` for modal editing (normal/insert modes) in the message composer. The current mode is shown while you type.
 
 The `/chronicle` command opens an interactive timeline of everything the agent has done in the current session. It shows file changes, tool calls, and conversation turns in chronological order, letting you review the full arc of the session at a glance:
 

@@ -3,7 +3,7 @@ title: 'Installing and Using Plugins'
 description: 'Learn how to find, install, and manage plugins that extend GitHub Copilot CLI with reusable agents, skills, hooks, and integrations.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-09-01
+lastUpdated: 2026-09-15
 relatedArticles:
   - ./building-custom-agents.md
   - ./creating-effective-skills.md
@@ -251,7 +251,7 @@ This opens an interactive list where each installed plugin and its components ar
 
 *(v1.0.81+)* `/plugin` also flags installed plugins and marketplaces that have a newer version available upstream, and offers an **Update** action to pull the latest version directly from the dashboard.
 
-> **Note**: Enabling and disabling hooks and LSP servers individually is temporarily unavailable following the `/plugins` removal — those toggles previously lived only in the retired dashboard.
+> **CLI enable/disable commands (v1.0.84+)**: You can now enable or disable individual plugin components from the command line without opening the interactive dashboard. `copilot mcp enable <server>` / `copilot mcp disable <server>` toggles MCP servers, `copilot skill enable <skill>` / `copilot skill disable <skill>` toggles skills, and `copilot plugin enable <plugin>` / `copilot plugin disable <plugin>` toggles an entire plugin. These replace the older `copilot plugins enable/disable --plugin|--mcp|--skill` flags, which have been removed along with the rest of the legacy `copilot plugins` cross-kind command. Use `copilot instruction list` and `copilot lsp list` (replacing `copilot plugins list --kind instruction` and `--kind lsp`) to inspect instructions and LSP servers individually.
 
 > **Dashboard available to everyone (v1.0.81+)**: The plugins dashboard (`/plugin`, `/mcp`, and `/skills`) is now on for all users by default. If you need to opt out, set `PLUGINS_DASHBOARD=false`, which also restores the legacy `copilot plugins` command. This opt-out was later removed in the same release, along with the legacy skills picker it kept alive — `/skills`, bare `/mcp`, and `/mcp show` (with no server name) always open the dashboard now, and `/mcp config` opens the dedicated MCP wizard.
 
