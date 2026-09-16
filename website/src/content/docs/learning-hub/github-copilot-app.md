@@ -3,7 +3,7 @@ title: 'Getting Started with the GitHub Copilot app'
 description: 'Learn about the GitHub Copilot app, a desktop experience built for agent-native development. Understand its key features and who it''s for.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-09-02
+lastUpdated: 2026-09-16
 estimatedReadingTime: '8 minutes'
 tags:
   - copilot-app
@@ -108,6 +108,14 @@ Agent Merge also understands **stacked pull requests**: it shows a stack summary
 ### Requesting Code Reviews
 
 From the app, you can request a Copilot code review on a pull request—and re-request a review even from reviewers who already responded—without leaving the session. This keeps the review loop inside the same workspace where the change was made.
+
+### Managing Issues and Pull Requests In-App
+
+*(v1.1.18+)* You can edit issue and pull request titles and descriptions, and edit, delete, or hide comments, directly from the app without switching to GitHub.com — an edited indicator is shown on changed comments. Pull request fix buttons also gained a **"Fix with instructions"** option, letting you add specific guidance before Copilot runs a fix, instead of relying only on the default fix behavior.
+
+### Generated Artifacts in the Files Tab
+
+*(v1.1.21+)* Files an agent generates during a session — such as Markdown reports or design docs — now open in the **Files** tab alongside your repository's own files, with a switcher to move between generated artifacts and repo files. A **promote** action lets you turn a useful generated artifact into a real file in the repository once you're happy with it.
 
 ## Who is the Copilot app for?
 
