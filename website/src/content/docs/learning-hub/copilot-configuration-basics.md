@@ -3,7 +3,7 @@ title: 'Copilot Configuration Basics'
 description: 'Learn how to configure GitHub Copilot at user, workspace, and repository levels to optimize your AI-assisted development experience.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-09-07
+lastUpdated: 2026-09-17
 estimatedReadingTime: '10 minutes'
 tags:
   - configuration
@@ -539,6 +539,12 @@ With the sidebar open, you can see all running and backgrounded sessions in a sp
 
 **Sidebar sort order** *(v1.0.83+)*: The split Sessions sidebar supports **Recent**, **Created**, **Name**, and classic **None** sorting so you can order the list the way that fits your workflow. Your chosen order is remembered across CLI restarts.
 
+**Vim mode** *(v1.0.85+)*: Turn on modal (Vim-style) editing in the composer with `/vim`, or set `editorMode` to `vim` in your configuration to enable it by default for every session. The current mode (normal or insert) is shown while you type.
+
+**`/config` sidebar** *(v1.0.85+)*: The `/config` command opens a sidebar configuration screen inside the CLI, giving you a persistent panel for adjusting settings without leaving your conversation — complementary to the full-screen `/settings` dialog described above.
+
+**Concise transcript view** *(v1.0.85+)*: Set `transcriptView` to `"concise"` in `/settings` to group tool activity into expandable work summaries instead of showing every individual tool call inline, which keeps long sessions easier to scan.
+
 **Windows 11 taskbar status** *(v1.0.83+)*: On Windows 11, running Copilot CLI sessions now appear in the taskbar with live hover status cards, so you can check on a background session's progress without switching back to its terminal window.
 
 The `/rewind` command opens a timeline picker that lets you roll back the conversation to any earlier point in history. You can also trigger it by pressing **double-Esc**:
@@ -846,6 +852,8 @@ These flags apply only to the current invocation — your persisted sandbox pref
 **`worktreeBaseRef` setting** *(v1.0.79-8+)*: Controls whether `/worktree`, `/worktree new`, and the `--worktree` startup flag create the new worktree from `HEAD` or from the remote default branch. All three now default to `HEAD`; previously `--worktree` defaulted to starting from the remote default branch. Set this in `/settings` if you want worktrees to branch from the remote default instead.
 
 > **Breaking change — sandbox network isolation (v1.0.83+)**: On macOS and Linux, sandboxed commands can no longer reach services running on your own machine, including a server the sandboxed command itself starts on `127.0.0.1`. This means test suites that bind a local port will fail inside the sandbox. Turn on **Allow local network** in `/sandbox` to restore access to localhost. On Linux, sandboxing also now requires `slirp4netns`, `nsenter`, `iptables`, `ip6tables`, `iptables-restore`, and `ip6tables-restore` on `PATH` — install these if sandboxed commands start failing to launch. Additionally, Linux sandboxes now restrict network egress to the configured HTTP(S) proxy when one is set; this proxy mode requires `slirp4netns`, `util-linux` 2.35+, `iptables`, and `/dev/net/tun` access.
+
+**Sandbox network host allow/deny rules** *(v1.0.85+)*: `/sandbox` now supports fine-grained network host allow/deny rules, letting you permit or block specific hosts without replacing your configured upstream proxy. This is useful when you need to grant a sandboxed session access to one additional domain (for example, a private package registry) while keeping the rest of the network policy intact.
 
 The `--attachment` flag (available in prompt mode, `-p`) lets you attach files — images or native documents — to the initial prompt in non-interactive mode:
 
