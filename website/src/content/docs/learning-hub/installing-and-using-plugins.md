@@ -3,7 +3,7 @@ title: 'Installing and Using Plugins'
 description: 'Learn how to find, install, and manage plugins that extend GitHub Copilot CLI with reusable agents, skills, hooks, and integrations.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-09-01
+lastUpdated: 2026-09-18
 relatedArticles:
   - ./building-custom-agents.md
   - ./creating-effective-skills.md
@@ -254,6 +254,31 @@ This opens an interactive list where each installed plugin and its components ar
 > **Note**: Enabling and disabling hooks and LSP servers individually is temporarily unavailable following the `/plugins` removal — those toggles previously lived only in the retired dashboard.
 
 > **Dashboard available to everyone (v1.0.81+)**: The plugins dashboard (`/plugin`, `/mcp`, and `/skills`) is now on for all users by default. If you need to opt out, set `PLUGINS_DASHBOARD=false`, which also restores the legacy `copilot plugins` command. This opt-out was later removed in the same release, along with the legacy skills picker it kept alive — `/skills`, bare `/mcp`, and `/mcp show` (with no server name) always open the dashboard now, and `/mcp config` opens the dedicated MCP wizard.
+
+**Dedicated `enable`/`disable` subcommands** *(v1.0.85+)*: `copilot plugin`, `copilot mcp`, and `copilot skill` now each accept `enable` and `disable` subcommands directly, replacing the older `copilot plugins enable/disable --plugin|--mcp|--skill` cross-kind syntax:
+
+```bash
+copilot plugin enable my-plugin     # replaces: copilot plugins enable --plugin my-plugin
+copilot mcp disable my-server       # replaces: copilot plugins disable --mcp my-server
+copilot skill enable my-skill       # replaces: copilot plugins enable --skill my-skill
+```
+
+> **Breaking change (v1.0.85+)**: The cross-kind `--kind`, `--scope`, `--mcp`, and `--skill` flags have been removed from `copilot plugins`. Use the kind-specific `copilot mcp` and `copilot skill` commands instead. `copilot plugins list` is now an alias of `copilot plugin list` and reports only plugins — not MCP servers, skills, instructions, or LSP servers. `copilot plugins list --json` now emits a flat array of plugins rather than the previous `{ plugins, errors }` object, so update any scripts that read `.plugins` from that output.
+
+**New listing commands** *(v1.0.85+)*: `copilot instruction list` and `copilot lsp list` replace `copilot plugins list --kind instruction` and `--kind lsp`. Add `--json` to `copilot plugin list`, `copilot plugin marketplace list`, and `copilot plugin marketplace browse` for machine-readable output:
+
+```bash
+copilot instruction list        # list active instruction files
+copilot lsp list                 # list active LSP servers
+copilot plugin list --json       # machine-readable plugin list
+```
+
+**Skill installation via `copilot skill add`** *(v1.0.85+)*: `copilot plugins install --skill [--scope project]` has been replaced by `copilot skill add [--project]` — the `--scope` spelling is gone:
+
+```bash
+copilot skill add ./my-skill/           # add a skill from a local directory
+copilot skill add --project ./my-skill/ # add it at the project level
+```
 
 ### Loading Plugins from a Local Directory
 

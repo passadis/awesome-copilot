@@ -3,7 +3,7 @@ title: 'Copilot Configuration Basics'
 description: 'Learn how to configure GitHub Copilot at user, workspace, and repository levels to optimize your AI-assisted development experience.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-09-07
+lastUpdated: 2026-09-18
 estimatedReadingTime: '10 minutes'
 tags:
   - configuration
@@ -387,6 +387,8 @@ Settings file: `.vscode/settings.json` or global user settings
   "editor.inlineSuggest.enabled": true
 }
 ```
+
+**Agent Skills (Experimental, VS Code 1.108+)**: Enable `chat.useAgentSkills` to have VS Code automatically detect skill folders from `.github/skills/` in your workspace (or `.claude/skills/` for backwards compatibility) and load them on demand into chat context. This uses the same `SKILL.md` format described in [Creating Effective Skills](../creating-effective-skills/), so skills you author for the CLI or Copilot app also work in VS Code once the setting is on.
 
 ### Visual Studio
 
@@ -846,6 +848,18 @@ These flags apply only to the current invocation — your persisted sandbox pref
 **`worktreeBaseRef` setting** *(v1.0.79-8+)*: Controls whether `/worktree`, `/worktree new`, and the `--worktree` startup flag create the new worktree from `HEAD` or from the remote default branch. All three now default to `HEAD`; previously `--worktree` defaulted to starting from the remote default branch. Set this in `/settings` if you want worktrees to branch from the remote default instead.
 
 > **Breaking change — sandbox network isolation (v1.0.83+)**: On macOS and Linux, sandboxed commands can no longer reach services running on your own machine, including a server the sandboxed command itself starts on `127.0.0.1`. This means test suites that bind a local port will fail inside the sandbox. Turn on **Allow local network** in `/sandbox` to restore access to localhost. On Linux, sandboxing also now requires `slirp4netns`, `nsenter`, `iptables`, `ip6tables`, `iptables-restore`, and `ip6tables-restore` on `PATH` — install these if sandboxed commands start failing to launch. Additionally, Linux sandboxes now restrict network egress to the configured HTTP(S) proxy when one is set; this proxy mode requires `slirp4netns`, `util-linux` 2.35+, `iptables`, and `/dev/net/tun` access.
+
+**Network host allow/deny rules** *(v1.0.85+)*: `/sandbox` now lets you add specific network host allow or deny rules without replacing your configured upstream proxy — useful when a sandboxed build needs to reach one extra internal host but you still want the rest of your existing proxy policy enforced. In v1.0.86+, the `/sandbox policy` view also reports local-network access using your currently configured setting, so the summary always matches what you last set in **Allow local network**.
+
+**Vim mode** *(v1.0.85+)*: Toggle modal (Vim-style) editing in the composer with `/vim`, or set `editorMode` to `vim` in `/settings`. The current mode (insert/normal) is shown while you type, so you always know which mode you're in before pressing a key that would otherwise send a message.
+
+**`/config`** *(v1.0.85+)*: Opens a sidebar configuration screen inside the CLI, giving you a persistent, navigable view of settings instead of the one-shot `/settings` dialog. Use whichever you find faster for your workflow — both read from and write to the same underlying configuration.
+
+**Session and memory import** *(v1.0.85+)*: New import commands accept the semantic JSONL interchange format, letting you bring session transcripts or memory entries from another compatible tool into Copilot CLI's session history.
+
+**Context management tools for agents and subagents** *(v1.0.85+)*: `/settings` now includes an opt-in to expose context management tools (such as compaction controls) directly to agents and subagents, so a custom agent can manage its own context window during a long task instead of relying solely on your manual `/compact` calls.
+
+**Repository instruction opt-in for custom agents** *(v1.0.86+)*: Custom agents can now set `include-custom-instructions: true` in their frontmatter to opt into reading repository instruction files (`AGENTS.md`, `copilot-instructions.md`, `CLAUDE.md`) even when the agent would otherwise run without them. See [Building Custom Agents](../building-custom-agents/) for the full frontmatter reference.
 
 The `--attachment` flag (available in prompt mode, `-p`) lets you attach files — images or native documents — to the initial prompt in non-interactive mode:
 

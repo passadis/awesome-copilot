@@ -3,7 +3,7 @@ title: 'GitHub Copilot Terminology Glossary'
 description: 'A quick reference guide defining common GitHub Copilot and platform-specific terms.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-09-07
+lastUpdated: 2026-09-18
 estimatedReadingTime: '8 minutes'
 tags:
   - glossary
@@ -281,11 +281,13 @@ tools: ['codebase', 'terminalCommand', 'github']
 
 ### Agent Host
 
-A VS Code component (v1.136+) that lets multiple VS Code windows connect to the same agent session. It runs agent harnesses (such as Copilot or Claude) in a dedicated process built on the open **Agent Host Protocol (AHP)**. The agent host's Copilot harness is powered by the [Copilot SDK](https://www.npmjs.com/package/@github/copilot-sdk), which keeps its behavior aligned with the Copilot CLI, the standalone GitHub Copilot app, and other Copilot products.
+A VS Code component (v1.136+) that lets multiple VS Code windows connect to the same agent session. It runs agent harnesses (such as Copilot, Claude, or Codex) in a dedicated process built on the open **Agent Host Protocol (AHP)**. The agent host's Copilot harness is powered by the [Copilot SDK](https://www.npmjs.com/package/@github/copilot-sdk), which keeps its behavior aligned with the Copilot CLI, the standalone GitHub Copilot app, and other Copilot products.
+
+As of v1.138, the agent host can also run sessions inside a local folder's **Dev Container** (`chat.agentHost.devContainer.enabled`) so an agent uses the project's own toolchain instead of your machine's, and it supports an expanded **Codex** harness that can use either a GitHub Copilot or a ChatGPT subscription, continue the same session across the ChatGPT app and VS Code, and call VS Code's built-in, extension, and MCP tools. You can also open a **Create pull request** form directly from an agent host session (`chat.agentMerge.enabled`) to review and edit the generated title and description before creating the PR.
 
 **Example**: Starting a session in one VS Code window, then reconnecting to the same live session from a second window without losing state.
 
-**When to use**: When you want a consistent agent session shared across multiple editor windows, or when you want the same underlying agent behavior across VS Code, the CLI, and the Copilot app.
+**When to use**: When you want a consistent agent session shared across multiple editor windows, when you want the same underlying agent behavior across VS Code, the CLI, and the Copilot app, or when you want an agent to run inside your project's own Dev Container.
 
 **Related terms**: [Agent](#agent), [Coding Agent](#coding-agent)
 
