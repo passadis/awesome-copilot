@@ -3,7 +3,7 @@ title: 'Installing and Using Plugins'
 description: 'Learn how to find, install, and manage plugins that extend GitHub Copilot CLI with reusable agents, skills, hooks, and integrations.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-09-01
+lastUpdated: 2026-09-19
 relatedArticles:
   - ./building-custom-agents.md
   - ./creating-effective-skills.md
@@ -252,6 +252,23 @@ This opens an interactive list where each installed plugin and its components ar
 *(v1.0.81+)* `/plugin` also flags installed plugins and marketplaces that have a newer version available upstream, and offers an **Update** action to pull the latest version directly from the dashboard.
 
 > **Note**: Enabling and disabling hooks and LSP servers individually is temporarily unavailable following the `/plugins` removal — those toggles previously lived only in the retired dashboard.
+
+**CLI commands for enable/disable** *(v1.0.85+)*: You can also toggle components directly from the command line with `enable` and `disable` subcommands on `copilot plugin`, `copilot mcp`, and `copilot skill`, replacing the older `copilot plugins enable/disable --plugin|--mcp|--skill` flags:
+
+```bash
+copilot plugin disable my-plugin
+copilot mcp disable my-server
+copilot skill enable my-skill
+```
+
+**Dedicated list commands** *(v1.0.85+)*: `copilot instruction list` and `copilot lsp list` replace `copilot plugins list --kind instruction` and `--kind lsp`, giving instructions and LSP servers their own first-class list commands alongside `copilot plugin list`, `copilot mcp list`, and `copilot skill list`.
+
+**`--json` output** *(v1.0.85+)*: `copilot plugin list`, `copilot plugin marketplace list`, and `copilot plugin marketplace browse` all support a `--json` flag for machine-readable output — useful for scripting plugin inventory checks or building custom tooling around your installed plugins:
+
+```bash
+copilot plugin list --json
+copilot plugin marketplace browse awesome-copilot --json
+```
 
 > **Dashboard available to everyone (v1.0.81+)**: The plugins dashboard (`/plugin`, `/mcp`, and `/skills`) is now on for all users by default. If you need to opt out, set `PLUGINS_DASHBOARD=false`, which also restores the legacy `copilot plugins` command. This opt-out was later removed in the same release, along with the legacy skills picker it kept alive — `/skills`, bare `/mcp`, and `/mcp show` (with no server name) always open the dashboard now, and `/mcp config` opens the dedicated MCP wizard.
 

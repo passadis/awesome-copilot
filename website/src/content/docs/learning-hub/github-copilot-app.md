@@ -3,7 +3,7 @@ title: 'Getting Started with the GitHub Copilot app'
 description: 'Learn about the GitHub Copilot app, a desktop experience built for agent-native development. Understand its key features and who it''s for.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-09-02
+lastUpdated: 2026-09-19
 estimatedReadingTime: '8 minutes'
 tags:
   - copilot-app
@@ -108,6 +108,17 @@ Agent Merge also understands **stacked pull requests**: it shows a stack summary
 ### Requesting Code Reviews
 
 From the app, you can request a Copilot code review on a pull request—and re-request a review even from reviewers who already responded—without leaving the session. This keeps the review loop inside the same workspace where the change was made.
+
+### Recent Additions
+
+A few notable features have landed in recent Copilot app releases:
+
+- **Edit issues and pull requests in place** *(v1.1.18+)*: Edit issue and pull request titles and descriptions, and edit, delete, or hide comments, directly from the app without switching to GitHub.com.
+- **"Fix with instructions"** *(v1.1.18+)*: Pull request fix buttons now have a chevron with a "Fix with instructions" option, letting you add guidance before the agent runs the fix, instead of only triggering a default fix.
+- **Chats pill** *(v1.1.18+)*: A Chats pill above the composer shows unread and input-required status across your side chats, with quick navigation between them.
+- **`/settings` slash command** *(v1.1.16+)*: Open app settings directly from the message composer with `/settings`, without leaving your conversation.
+- **Files tab artifact switcher** *(v1.1.20+/v1.1.21+)*: Generated artifacts, like Markdown files an agent creates, now open in the Files tab alongside repository files, with a switcher between them and an option to promote an artifact into the repository.
+- **Plugin-aware agent picker** *(v1.1.20+/v1.1.21+)*: Custom agents that share a display name across different plugins are now distinguished in the agent picker and `/agent` autocomplete by their owning plugin, so you can tell them apart.
 
 ## Who is the Copilot app for?
 
