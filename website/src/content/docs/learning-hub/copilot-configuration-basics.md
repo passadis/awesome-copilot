@@ -438,6 +438,10 @@ CLI settings use **camelCase** naming. Key settings added in recent releases:
 
 > **Piping an auth token (v1.0.81+)**: Use `copilot login --with-token` to read an authentication token from stdin instead of going through the interactive browser or device-code flow — useful for scripted or containerized setups where a token is already available in the environment.
 
+> **Vim mode for the composer (v1.0.85+)**: Turn on modal (Vim-style) editing in the prompt composer with `/vim`, or set `"editorMode": "vim"` in `config.json` to enable it for every session. The current mode (`INSERT` or `NORMAL`) is shown while you type, so you always know which mode you're in.
+
+> **`/config` sidebar (v1.0.85+)**: Run `/config` to open a sidebar configuration screen inside the CLI, letting you browse and change settings without leaving your session or hand-editing `config.json`.
+
 In addition to the main config file, GitHub Copilot CLI reads two optional per-project files for repository-specific overrides:
 
 - `.claude/settings.json` — committed project settings
@@ -846,6 +850,8 @@ These flags apply only to the current invocation — your persisted sandbox pref
 **`worktreeBaseRef` setting** *(v1.0.79-8+)*: Controls whether `/worktree`, `/worktree new`, and the `--worktree` startup flag create the new worktree from `HEAD` or from the remote default branch. All three now default to `HEAD`; previously `--worktree` defaulted to starting from the remote default branch. Set this in `/settings` if you want worktrees to branch from the remote default instead.
 
 > **Breaking change — sandbox network isolation (v1.0.83+)**: On macOS and Linux, sandboxed commands can no longer reach services running on your own machine, including a server the sandboxed command itself starts on `127.0.0.1`. This means test suites that bind a local port will fail inside the sandbox. Turn on **Allow local network** in `/sandbox` to restore access to localhost. On Linux, sandboxing also now requires `slirp4netns`, `nsenter`, `iptables`, `ip6tables`, `iptables-restore`, and `ip6tables-restore` on `PATH` — install these if sandboxed commands start failing to launch. Additionally, Linux sandboxes now restrict network egress to the configured HTTP(S) proxy when one is set; this proxy mode requires `slirp4netns`, `util-linux` 2.35+, `iptables`, and `/dev/net/tun` access.
+
+> **Network host allow/deny rules (v1.0.85+)**: `/sandbox` now supports fine-grained network host allow/deny rules layered on top of your configured upstream proxy, instead of only an all-or-nothing local-network toggle. This lets you permit a specific internal host or API endpoint while keeping the rest of the network restricted. `/sandbox policy` also reports whether local-network access is currently permitted based on your configured setting (v1.0.86+), so you can confirm the effective policy without guessing.
 
 The `--attachment` flag (available in prompt mode, `-p`) lets you attach files — images or native documents — to the initial prompt in non-interactive mode:
 

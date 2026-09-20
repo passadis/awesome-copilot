@@ -82,6 +82,8 @@ Closing the app's main window keeps it running in the background instead of quit
 
 For a hands-on guide to building canvases with `/create-canvas`, see [Working with Canvas Extensions](../working-with-canvas-extensions/).
 
+> **Generated artifacts in the Files tab (v1.1.21+)**: Markdown files and other artifacts an agent generates now open in the **Files tab** alongside your repository's own files, with a switcher to move between generated and repository content. You can also **promote** a generated artifact into the repository directly from this view, turning a draft document into a tracked file with one click.
+
 ### Customize
 
 **Customize** *(v1.1.13+)* is a single place in the Copilot app to browse and manage everything that extends your agents: plugins, skills, MCP servers, and canvases. Instead of hunting through separate settings pages, open **Customize** to:

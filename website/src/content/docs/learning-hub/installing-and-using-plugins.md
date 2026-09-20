@@ -255,6 +255,29 @@ This opens an interactive list where each installed plugin and its components ar
 
 > **Dashboard available to everyone (v1.0.81+)**: The plugins dashboard (`/plugin`, `/mcp`, and `/skills`) is now on for all users by default. If you need to opt out, set `PLUGINS_DASHBOARD=false`, which also restores the legacy `copilot plugins` command. This opt-out was later removed in the same release, along with the legacy skills picker it kept alive — `/skills`, bare `/mcp`, and `/mcp show` (with no server name) always open the dashboard now, and `/mcp config` opens the dedicated MCP wizard.
 
+> **Non-interactive enable/disable and listing commands (v1.0.85+)**: The cross-kind `copilot plugins` commands have been split into kind-specific commands for scripting and CI use:
+>
+> ```bash
+> # Enable or disable a whole plugin, a single MCP server, or a single skill
+> copilot plugin enable my-plugin
+> copilot plugin disable my-plugin
+> copilot mcp enable my-server
+> copilot mcp disable my-server
+> copilot skill enable my-skill
+> copilot skill disable my-skill
+>
+> # List instructions or LSP servers directly (replaces `copilot plugins list --kind instruction|lsp`)
+> copilot instruction list
+> copilot lsp list
+>
+> # Add --json to any list/browse command for machine-readable output
+> copilot plugin list --json
+> copilot plugin marketplace list --json
+> copilot plugin marketplace browse --json
+> ```
+>
+> These replace the older `copilot plugins enable/disable --plugin|--mcp|--skill` syntax. Note also that `copilot plugins list --json` now returns a flat array of plugins (not the older `{ plugins, errors }` object), and `copilot plugins list` is an alias for `copilot plugin list` that reports plugins only — not MCP servers, skills, instructions, or LSP servers.
+
 ### Loading Plugins from a Local Directory
 
 You can load plugins directly from a local directory without installing them from a marketplace, using the `--plugin-dir` flag when starting Copilot:
