@@ -3,7 +3,7 @@ title: 'Getting Started with the GitHub Copilot app'
 description: 'Learn about the GitHub Copilot app, a desktop experience built for agent-native development. Understand its key features and who it''s for.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-09-02
+lastUpdated: 2026-09-21
 estimatedReadingTime: '8 minutes'
 tags:
   - copilot-app
@@ -91,6 +91,10 @@ For a hands-on guide to building canvases with `/create-canvas`, see [Working wi
 - Create, edit, or remove your own **personal skills** directly in the app, without hand-authoring a `SKILL.md` file
 
 This makes Customize a good starting point if you want to extend the app's capabilities but don't need the full `copilot plugin` CLI workflow described in [Installing and Using Plugins](../installing-and-using-plugins/).
+
+### Local Sandbox
+
+**Local sandbox** *(v1.1.23+)* is a per-project setting, paired with a `/sandbox` command, that restricts an agent's shell commands to the session's workspace. Enable it when you want an extra layer of containment for autonomous work without giving up the convenience of running commands locally — the agent can read and write within the project but cannot reach the rest of your filesystem.
 
 ### Agent Merge
 

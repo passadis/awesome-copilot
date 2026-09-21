@@ -3,7 +3,7 @@ title: 'Copilot Configuration Basics'
 description: 'Learn how to configure GitHub Copilot at user, workspace, and repository levels to optimize your AI-assisted development experience.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-09-07
+lastUpdated: 2026-09-21
 estimatedReadingTime: '10 minutes'
 tags:
   - configuration
@@ -437,6 +437,14 @@ CLI settings use **camelCase** naming. Key settings added in recent releases:
 > **Session restore after a crash (v1.0.81+)**: If the CLI is interrupted unexpectedly — a crash or a machine restart — startup now offers to restore any sessions that were still open, so you don't have to reopen each terminal by hand.
 
 > **Piping an auth token (v1.0.81+)**: Use `copilot login --with-token` to read an authentication token from stdin instead of going through the interactive browser or device-code flow — useful for scripted or containerized setups where a token is already available in the environment.
+
+**Vim mode** *(v1.0.85+)*: Turn on modal editing in the composer with `/vim`, or set `editorMode` to `vim` in your settings. The current mode (insert or normal) is shown while you type, so you can navigate and edit prompts using familiar Vim keybindings.
+
+**`/config` sidebar** *(v1.0.85+)*: Run `/config` to open a sidebar configuration screen without leaving your session — a faster way to browse and adjust settings than the full `/settings` dialog for quick lookups.
+
+**`worktreePathTemplate` setting** *(v1.0.87+)*: Controls where `/worktree`, `/move`, `/new`, and the `--worktree` startup flag create new worktrees. Set a custom location, for example `~/src/worktrees/{repo}/{branch}`, using the placeholders `{repoPath}`, `{repo}`, `{branch}`, and `{branchSlug}`. Leave it unset to keep the default layout, `<repo>.worktrees/`, with slashes in branch names flattened to dashes.
+
+**Steering prompt recall** *(v1.0.87+)*: Consecutive steering prompts submitted in the same mode now combine into a single pending message instead of queuing separately. Press **Up** in an empty chat input to recall that pending message back into the composer for editing — including any pasted text or attachments — with a recall hint shown in the message. **Ctrl+C** stops the running turn instead of removing pending prompts one at a time, while **Ctrl+Q** queued prompts remain separate from steering. Use **Ctrl+P** to browse prompt history without withdrawing pending prompts. This is available for local sessions only; commands and prompts already being processed cannot be recalled.
 
 In addition to the main config file, GitHub Copilot CLI reads two optional per-project files for repository-specific overrides:
 
