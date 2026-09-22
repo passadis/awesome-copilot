@@ -3,7 +3,7 @@ title: 'Getting Started with the GitHub Copilot app'
 description: 'Learn about the GitHub Copilot app, a desktop experience built for agent-native development. Understand its key features and who it''s for.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-09-02
+lastUpdated: 2026-09-22
 estimatedReadingTime: '8 minutes'
 tags:
   - copilot-app
@@ -44,11 +44,13 @@ The key difference from existing Copilot experiences is that the app is purpose-
 The central hub of the Copilot app is the **My Work** view. This dashboard shows:
 
 - **Active sessions**: Each agent working on a task gets its own isolated session
-- **Issues and PRs**: Your inbox of work items from connected repositories
+- **Issues and PRs**: Your inbox of work items from connected repositories, split into separate **Issues** and **Pull requests** sections *(v1.1.23+)*, with repositories browsable as their own dedicated pages
 - **Background automations**: Tasks running in the background, like Agent Merge handling your pull requests
 - **Overall status**: A quick overview of what's in progress, what's done, and what's blocked
 
 Instead of checking GitHub, your CLI, and VS Code for updates, everything is in one place.
+
+**AI-generated filters** *(v1.1.23+)*: In My work's Add filter menu, describe the results you want in plain language and the app generates a filter you can inspect, edit, or revert — no need to hand-build filter expressions. Repository-level Issues and Pull requests views can also be edited, reordered, duplicated, and deleted, just like custom views.
 
 ### Automations
 
@@ -71,6 +73,10 @@ This makes it easy to dispatch multiple agents and trust they won't interfere wi
 ### Running in the Background
 
 Closing the app's main window keeps it running in the background instead of quitting, with tray (Windows/Linux) or Dock (macOS) support to bring it back. This means scheduled automations and in-progress sessions keep running even when the window isn't open.
+
+### Local Sandbox
+
+**Local sandbox** *(v1.1.23+)* restricts the shell commands a session's agent runs to the session's own workspace, mirroring the sandbox model available in the Copilot CLI. Turn it on as a project setting, or toggle it for the current session with the `/sandbox` command inside a session. This adds a safety boundary for autonomous or unattended agent work without needing to switch to the CLI.
 
 ### Canvases
 

@@ -3,7 +3,7 @@ title: 'GitHub Copilot Terminology Glossary'
 description: 'A quick reference guide defining common GitHub Copilot and platform-specific terms.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-09-07
+lastUpdated: 2026-09-22
 estimatedReadingTime: '8 minutes'
 tags:
   - glossary
@@ -286,6 +286,20 @@ A VS Code component (v1.136+) that lets multiple VS Code windows connect to the 
 **Example**: Starting a session in one VS Code window, then reconnecting to the same live session from a second window without losing state.
 
 **When to use**: When you want a consistent agent session shared across multiple editor windows, or when you want the same underlying agent behavior across VS Code, the CLI, and the Copilot app.
+
+**Related terms**: [Agent](#agent), [Coding Agent](#coding-agent)
+
+---
+
+### Sandbox
+
+An OS-level restriction that confines the file system, network, and process access available to shell commands an agent runs, in both the Copilot CLI and the Copilot app. When enabled, sandboxed commands can only write within approved paths and, by default, cannot reach other services on the local network—including a server the command itself starts on `127.0.0.1`, unless you turn on **Allow local network**. A managed organization policy can require, restrict, or allow opting out of the sandbox for a session.
+
+**Example**: Running `copilot --sandbox -p "Run the full test suite and fix any failures"` executes the test suite with filesystem writes restricted to the project workspace; enabling the Copilot app's local sandbox setting applies the same restriction to commands the app's agent runs.
+
+**When to use**: When you want an extra safety boundary around autonomous or automated agent runs, especially in CI or unattended `--yolo`/autopilot workflows, while still allowing legitimate build and test commands to succeed.
+
+**Learn more**: [Copilot Configuration Basics](../copilot-configuration-basics/)
 
 **Related terms**: [Agent](#agent), [Coding Agent](#coding-agent)
 
