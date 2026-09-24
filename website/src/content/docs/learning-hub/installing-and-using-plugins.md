@@ -3,7 +3,7 @@ title: 'Installing and Using Plugins'
 description: 'Learn how to find, install, and manage plugins that extend GitHub Copilot CLI with reusable agents, skills, hooks, and integrations.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-09-01
+lastUpdated: 2026-09-24
 relatedArticles:
   - ./building-custom-agents.md
   - ./creating-effective-skills.md
@@ -110,6 +110,8 @@ Browse plugins in a specific marketplace:
 ```bash
 copilot plugin marketplace browse awesome-copilot
 ```
+
+> **`--json` output (v1.0.85+)**: `copilot plugin list`, `copilot plugin marketplace list`, and `copilot plugin marketplace browse` all support a `--json` flag for machine-readable output, useful for scripting plugin discovery and inventory checks.
 
 Or from within an interactive Copilot session:
 
@@ -234,6 +236,16 @@ copilot plugin marketplace update
 # Remove a plugin
 copilot plugin uninstall my-plugin
 ```
+
+> **Component-scoped list commands (v1.0.85+)**: `copilot instruction list` and `copilot lsp list` are now dedicated commands for listing installed instructions and LSP servers, replacing `copilot plugins list --kind instruction` and `copilot plugins list --kind lsp`. Use `copilot mcp list` and `copilot skill list` for MCP servers and skills — these mirror the existing per-kind commands.
+
+> **Enable/disable subcommands (v1.0.85+)**: `enable` and `disable` were added directly to `copilot plugin`, `copilot mcp`, and `copilot skill`, replacing `copilot plugins enable/disable --plugin|--mcp|--skill`:
+>
+> ```bash
+> copilot plugin disable my-plugin
+> copilot mcp disable postgres
+> copilot skill enable database-migrations
+> ```
 
 > **Auto-update for first-party plugins** *(v1.0.78+)*: Plugins sourced from the official `copilot-plugins` marketplace automatically update to their latest version at the start of each session. You do not need to run `copilot plugin update` for first-party plugins — updates are applied silently on startup. Community plugins from `awesome-copilot` and other marketplace registries still require a manual `copilot plugin update` command.
 
