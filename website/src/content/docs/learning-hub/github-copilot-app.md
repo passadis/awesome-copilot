@@ -3,7 +3,7 @@ title: 'Getting Started with the GitHub Copilot app'
 description: 'Learn about the GitHub Copilot app, a desktop experience built for agent-native development. Understand its key features and who it''s for.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-09-02
+lastUpdated: 2026-09-25
 estimatedReadingTime: '8 minutes'
 tags:
   - copilot-app
@@ -49,6 +49,16 @@ The central hub of the Copilot app is the **My Work** view. This dashboard shows
 - **Overall status**: A quick overview of what's in progress, what's done, and what's blocked
 
 Instead of checking GitHub, your CLI, and VS Code for updates, everything is in one place.
+
+*(v1.1.23+)*: My Work is now split into separate **Issues** and **Pull requests** sections in the sidebar and navigation, and repositories can be browsed as dedicated pages. The **Add filter** menu can also generate a filter from a plain-language description of the results you want, which you can inspect, edit, or revert before applying.
+
+### Local Sandbox for Agent Commands
+
+*(v1.1.23+)*: A new project setting and `/sandbox` command let you run the agent's shell commands in a local sandbox that restricts filesystem access to the session's workspace. This mirrors the sandboxing options available in Copilot CLI (see [Copilot Configuration Basics](../copilot-configuration-basics/)) and gives you an extra layer of protection when an agent is running commands you haven't fully reviewed.
+
+### Restarting Sessions and Side Chats
+
+*(v1.1.23+)*: Use the `/restart-session` command to restart a chat or side chat conversation while preserving its history — useful when a session gets stuck or you want a clean context without losing the record of what was discussed. Open side chats can also be closed directly from the session rail with a new **Close** action, without navigating to the panel tab strip.
 
 ### Automations
 

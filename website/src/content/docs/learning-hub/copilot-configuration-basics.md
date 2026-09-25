@@ -3,7 +3,7 @@ title: 'Copilot Configuration Basics'
 description: 'Learn how to configure GitHub Copilot at user, workspace, and repository levels to optimize your AI-assisted development experience.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-09-07
+lastUpdated: 2026-09-25
 estimatedReadingTime: '10 minutes'
 tags:
   - configuration
@@ -540,6 +540,21 @@ With the sidebar open, you can see all running and backgrounded sessions in a sp
 **Sidebar sort order** *(v1.0.83+)*: The split Sessions sidebar supports **Recent**, **Created**, **Name**, and classic **None** sorting so you can order the list the way that fits your workflow. Your chosen order is remembered across CLI restarts.
 
 **Windows 11 taskbar status** *(v1.0.83+)*: On Windows 11, running Copilot CLI sessions now appear in the taskbar with live hover status cards, so you can check on a background session's progress without switching back to its terminal window.
+
+**Vim mode** *(v1.0.85+)*: Modal editing is now available to everyone in the composer. Turn it on with `/vim` or by setting `editorMode` to `vim` in your settings. The current mode (insert or normal) is shown while you type, matching the familiar Vim keybinding model for navigating and editing text.
+
+**`/config` sidebar** *(v1.0.85+)*: The `/config` command opens a sidebar configuration screen inside the CLI, giving you a persistent panel for browsing and adjusting settings alongside your active conversation — similar in spirit to the Sessions Sidebar but focused on configuration.
+
+**Session and memory import** *(v1.0.85+)*: Copilot CLI can import sessions and memory using a semantic JSONL interchange format, making it easier to bring conversation history or accumulated context from other tools or previous exports into a new session.
+
+**Command renames for clarity** *(v1.0.85+)*: Several `copilot plugins` subcommands were replaced with more specific top-level commands:
+- `copilot instruction list` and `copilot lsp list` replace `copilot plugins list --kind instruction` and `--kind lsp`.
+- `enable` and `disable` were added to `copilot plugin`, `copilot mcp`, and `copilot skill`, replacing `copilot plugins enable/disable --plugin|--mcp|--skill`.
+- `copilot plugin list`, `copilot plugin marketplace list`, and `copilot plugin marketplace browse` gained a `--json` flag for scripting.
+
+**New model: GPT-6 Astra** *(v1.0.85+)*: Added support for GPT-6 Astra, joining the model family aliases described above.
+
+**Sandboxed network host rules** *(v1.0.85+)*: `/sandbox` gained Network host allow/deny rules that layer on top of your configured upstream proxy instead of replacing it, giving finer-grained control over which hosts a sandboxed session can reach.
 
 The `/rewind` command opens a timeline picker that lets you roll back the conversation to any earlier point in history. You can also trigger it by pressing **double-Esc**:
 
