@@ -3,7 +3,7 @@ title: 'Agents and Subagents'
 description: 'Learn how delegated subagents differ from primary agents, when to use them, and how to launch them in VS Code and Copilot CLI.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-09-02
+lastUpdated: 2026-09-26
 estimatedReadingTime: '9 minutes'
 tags:
   - agents
@@ -156,6 +156,8 @@ The **complementary model strategy** lets you specify that the rubber-duck agent
 Because it runs as a sub-agent layer rather than replacing your primary model, you keep your current session model and context while the rubber-duck analysis runs in the background.
 
 > **Note**: This is an experimental feature and may change. Provide feedback via `/feedback` if you find it useful.
+
+> **Generally available (v1.0.87+)**: The rubber-duck agent is now enabled for every model family and for low-cost-tier session models, without needing `/experimental` to be turned on first.
 
 ## Orchestration patterns that work well
 

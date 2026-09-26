@@ -3,7 +3,7 @@ title: 'Getting Started with the GitHub Copilot app'
 description: 'Learn about the GitHub Copilot app, a desktop experience built for agent-native development. Understand its key features and who it''s for.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-09-02
+lastUpdated: 2026-09-26
 estimatedReadingTime: '8 minutes'
 tags:
   - copilot-app
@@ -108,6 +108,14 @@ Agent Merge also understands **stacked pull requests**: it shows a stack summary
 ### Requesting Code Reviews
 
 From the app, you can request a Copilot code review on a pull request—and re-request a review even from reviewers who already responded—without leaving the session. This keeps the review loop inside the same workspace where the change was made.
+
+### Sandboxed Shell Commands
+
+**Local sandbox** *(v1.1.23+)*: A project setting and `/sandbox` command let you run the agent's shell commands in a local sandbox that restricts filesystem access to the current session's workspace, adding a safety boundary similar to the Copilot CLI's sandbox mode.
+
+### Featured Canvases
+
+The **Customize** panel now includes featured, ready-to-install canvases for popular tools — for example, a **Sentry canvas** *(v1.1.23+)* that lets you install and open it directly to triage live Sentry issues without leaving the app.
 
 ## Who is the Copilot app for?
 
