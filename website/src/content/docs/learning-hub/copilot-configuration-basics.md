@@ -3,7 +3,7 @@ title: 'Copilot Configuration Basics'
 description: 'Learn how to configure GitHub Copilot at user, workspace, and repository levels to optimize your AI-assisted development experience.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-09-07
+lastUpdated: 2026-09-28
 estimatedReadingTime: '10 minutes'
 tags:
   - configuration
@@ -446,6 +446,8 @@ In addition to the main config file, GitHub Copilot CLI reads two optional per-p
 These files follow the same format as `config.json` and are loaded after the global config, so they can tailor CLI behaviour—including hook definitions—per repository without touching `.github/`.
 
 > **Important (v1.0.36+)**: Custom agents, skills, and commands placed in `~/.claude/` (the Claude Code user directory) are **no longer loaded** by GitHub Copilot CLI. Only `~/.claude/settings.json` is read for configuration. If you previously stored personal agents or skills in `~/.claude/`, move them to the supported locations: `~/.copilot/agents/` for user-level agents, `~/.copilot/skills/` or `~/.agents/skills/` for personal skills, or `.github/agents/` and `.github/skills/` in your repositories for project-level customizations.
+
+> **Claude Code rule files (v1.0.89+)**: Rule files in `.claude/rules` are now loaded as custom instructions, so repositories that already keep Claude Code rules there get them applied in Copilot CLI without duplication.
 
 ### Model Picker
 
