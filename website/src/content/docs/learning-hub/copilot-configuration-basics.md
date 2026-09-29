@@ -569,6 +569,8 @@ The `/fork` command (v1.0.45+) copies the current session into a **new independe
 
 After forking, the new session is immediately active. Both sessions share the same history up to the fork point but accumulate changes independently from that moment forward. Use `/fork` to experiment with a risky refactor without abandoning your current working session. Since v1.0.47, forked sessions display their **origin session** name in the sessions dialog, making it easy to trace which session a fork came from.
 
+In v1.0.88+, `/fork` also works while an agent turn is still running, so you can branch without waiting. In v1.0.87+, the `worktreePathTemplate` setting controls where `/worktree`, `/move`, `/new` and `--worktree` create worktrees, for example `~/src/worktrees/{repo}/{branch}` (supported placeholders: `{repoPath}`, `{repo}`, `{branch}`, `{branchSlug}`).
+
 The `/cd` command changes the working directory for the current session. Since v1.0.65, the working directory **persists when you resume a session** — if you restart the CLI and resume, you return to the same directory automatically. Changing directory also triggers discovery of custom agents in the new location, so switching to a different project loads its agents without a restart:
 
 ```
