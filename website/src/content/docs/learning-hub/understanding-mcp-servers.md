@@ -217,6 +217,8 @@ Some MCP servers require authentication to connect to protected resources. GitHu
 
 > **Client ID Metadata Document support (v1.0.83+)**: Copilot CLI can now sign in to MCP servers using a **Client ID Metadata Document (CIMD)** for OAuth, an alternative to Dynamic Client Registration where the client's identity is published as a metadata document at a URL instead of being registered ahead of time with the authorization server.
 
+> **Scoped GitHub auth (v1.0.90+)**: Pass `--mcp-github-auth` to limit your GitHub account authentication to approved MCP server origins, so tokens are only presented to servers you've explicitly trusted. Also in v1.0.90+, MCP tools recover from transient discovery failures without restarting the session, and MCP OAuth sign-in reuses a still-valid cached token.
+
 ## How Agents Use MCP Tools
 
 When an agent declares an MCP server in its `tools` array, Copilot can invoke that server's capabilities during conversation:
