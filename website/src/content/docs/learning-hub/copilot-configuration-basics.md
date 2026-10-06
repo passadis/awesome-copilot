@@ -3,7 +3,7 @@ title: 'Copilot Configuration Basics'
 description: 'Learn how to configure GitHub Copilot at user, workspace, and repository levels to optimize your AI-assisted development experience.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-09-07
+lastUpdated: 2026-10-06
 estimatedReadingTime: '10 minutes'
 tags:
   - configuration
@@ -471,6 +471,8 @@ The model picker opens in a **full-screen view** with inline reasoning effort ad
 
 When you leave plan mode, the CLI automatically reverts to your session model. This pairing works well with repository model pinning — you can enforce a high-quality model for implementation while allowing a lighter model during exploration and planning.
 
+**Newer models** *(v1.0.85–v1.0.90)*: GPT-6 Astra, GPT-6 Sol, GPT-6 Luna, GPT-6.1 Sol, and claude-opus-5.5 appear in the model picker when available to your plan. In Auto mode you can also switch the suggested routing tier with a shortcut or click.
+
 ### CLI Session Commands
 
 The `/settings` command (v1.0.61+) opens an interactive dialog to browse and edit all user settings in one place. Use it to discover available settings, toggle options, and update values without manually editing your config file:
@@ -879,6 +881,14 @@ copilot --config-dir ~/.my-copilot-config
 ```
 
 Set `COPILOT_HOME` in your shell profile to use a custom config directory across all sessions. This is especially useful when running multiple Copilot configurations for different projects or teams.
+
+**`copilot config` subcommands** *(v1.0.92+)*: List, read, set, and remove CLI settings from the shell without opening `/config` or editing files by hand. Run `copilot config --help` to see the available subcommands.
+
+**`worktreePathTemplate` setting** *(v1.0.87+)*: Controls where `/worktree`, `/move`, `/new`, and `--worktree` create worktrees. Placeholders `{repoPath}`, `{repo}`, `{branch}`, and `{branchSlug}` are supported, for example `~/src/worktrees/{repo}/{branch}`.
+
+**Claude Code rule files** *(v1.0.89+)*: Files in `.claude/rules` are loaded as custom instructions, alongside `AGENTS.md` and `copilot-instructions.md`.
+
+**Local or cloud environment picker** *(v1.0.92+)*: Before the first message of a conversation, press **Ctrl+E** to choose between a local run and a cloud run.
 
 ### Shell Completion
 

@@ -3,7 +3,7 @@ title: 'Understanding MCP Servers'
 description: 'Learn how Model Context Protocol servers extend GitHub Copilot with access to external tools, databases, and APIs.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-09-05
+lastUpdated: 2026-10-06
 estimatedReadingTime: '8 minutes'
 tags:
   - mcp
@@ -133,6 +133,10 @@ copilot --allow-all-mcp-server-instructions
 ```
 
 Use this only with servers you fully trust, since their instructions can influence how Copilot responds throughout the entire session. For most projects, the default behavior is sufficient — only enable this if a specific server requires it (for example, an internal tool whose instructions you control).
+
+### Scoping GitHub Authentication to MCP Servers
+
+Use `--mcp-github-auth` *(v1.0.90+)* to limit your GitHub account authentication to approved MCP server origins, so a server you have not approved never receives your GitHub credentials. Run `copilot --help` for the exact syntax in your installed version.
 
 ### Managing Persistent MCP Configuration via Server RPCs
 
