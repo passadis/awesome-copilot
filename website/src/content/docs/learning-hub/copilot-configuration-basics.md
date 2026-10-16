@@ -3,7 +3,7 @@ title: 'Copilot Configuration Basics'
 description: 'Learn how to configure GitHub Copilot at user, workspace, and repository levels to optimize your AI-assisted development experience.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-09-07
+lastUpdated: 2026-10-16
 estimatedReadingTime: '10 minutes'
 tags:
   - configuration
@@ -692,6 +692,12 @@ The `/ask` command lets you ask a quick question without affecting your conversa
 ```
 /ask What does the `retry` utility in src/utils do?
 ```
+
+*(v1.0.98+)* Expand a long `/ask` answer with **Ctrl+E**, copy the whole answer with **Ctrl+Y**, and reopen the last completed answer by running `/ask` or `/btw` again.
+
+**Inline images (v1.0.97+)**: Inline images now render by default on supported terminals without enabling experimental mode. Turn them off with `/settings inlineImages false`.
+
+**`/add-dir` and sandbox (v1.0.96+)**: `/add-dir` also grants sandbox access to the added directories for the current session.
 
 The `/refine` command *(v1.0.70+)* rewrites a rough, stream-of-consciousness prompt into a clear, structured one before sending it to the agent:
 

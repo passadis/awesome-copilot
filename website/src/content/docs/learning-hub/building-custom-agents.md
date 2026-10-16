@@ -3,7 +3,7 @@ title: 'Building Custom Agents'
 description: 'Learn how to create specialized GitHub Copilot agents with custom personas, tool integrations, and domain expertise.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-09-05
+lastUpdated: 2026-10-16
 estimatedReadingTime: '10 minutes'
 tags:
   - agents
@@ -251,6 +251,10 @@ tools: ['codebase', 'terminal', 'postgres-mcp']
 ```
 
 The agent can then query your database, analyze query plans, and suggest optimizations—all within the conversation. For setup details, see [Understanding MCP Servers](../understanding-mcp-servers/).
+
+## Agent-Scoped Hooks
+
+*(Copilot CLI v1.0.97+)* Custom agents can declare hooks directly in their own configuration, so automation such as lint checks or command guards runs only while that agent is active rather than for every session. See [Automating with Hooks](../automating-with-hooks/) for hook events and the hook format.
 
 ## Best Practices
 

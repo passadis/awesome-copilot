@@ -3,7 +3,7 @@ title: 'Automating with Hooks'
 description: 'Learn how to use hooks to automate lifecycle events like formatting, linting, and governance checks during Copilot agent sessions.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-08-28
+lastUpdated: 2026-10-16
 estimatedReadingTime: '8 minutes'
 tags:
   - hooks
@@ -251,6 +251,8 @@ tags: ['formatting', 'code-quality']
 
 Runs your project's configured formatter (Prettier, Black, gofmt, etc.)
 automatically before the agent commits changes.
+
+> **Agent-scoped hooks (v1.0.97+)**: Custom agents can define declarative hooks of their own, which apply only when that agent runs. See [Building Custom Agents](../building-custom-agents/#agent-scoped-hooks).
 
 ## Setup
 
