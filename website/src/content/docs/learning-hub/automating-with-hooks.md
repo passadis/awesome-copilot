@@ -3,7 +3,7 @@ title: 'Automating with Hooks'
 description: 'Learn how to use hooks to automate lifecycle events like formatting, linting, and governance checks during Copilot agent sessions.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-08-28
+lastUpdated: 2026-10-18
 estimatedReadingTime: '8 minutes'
 tags:
   - hooks
@@ -559,6 +559,10 @@ Send session activity to a remote audit endpoint using an HTTP hook (no local sc
 ```
 
 The CLI POSTs the session context as JSON to the specified URL. This is ideal for centralized logging or compliance services that should receive events from all developers without requiring each person to install a local script.
+
+### Agent-Scoped Hooks (v1.0.97+)
+
+Custom agents can declare their own hooks, so automation applies only while that agent is active instead of for every session. Use this to attach, for example, a security gate to a reviewer agent without affecting other work. Command hooks also now complete reliably even when child-exit signals are lost under Node (v1.0.98+).
 
 ### Injecting Context into Subagents
 
