@@ -3,7 +3,7 @@ title: 'Installing and Using Plugins'
 description: 'Learn how to find, install, and manage plugins that extend GitHub Copilot CLI with reusable agents, skills, hooks, and integrations.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-09-01
+lastUpdated: 2026-10-21
 relatedArticles:
   - ./building-custom-agents.md
   - ./creating-effective-skills.md
@@ -173,6 +173,8 @@ With this in place, team members automatically get the `my-org-plugins` marketpl
 
 This is useful for internal marketplaces where you want every team member to always be running the latest published plugin versions.
 
+*(v1.0.102+)* Marketplace entries can also use `git-subdir` sources, so a plugin can live in a subdirectory of a larger repository, and long plugin descriptions are now accepted.
+
 ### Pinning a Marketplace to a Specific Commit
 
 *(v1.0.70+)* To ensure reproducibility and prevent unintended updates, you can pin a marketplace to an exact commit SHA using the `sha` field in the source configuration:
@@ -212,6 +214,16 @@ Or from an interactive session:
 ```
 
 > **Deprecation notice**: Installing plugins directly from a GitHub repository URL, raw URL, or local file path (e.g., `copilot plugin install github/awesome-copilot`) is deprecated and will be removed in a future release. Use marketplace-based installation instead.
+
+### From a GitHub Install Link
+
+*(v1.0.100+)* Verified skills and plugins can be installed from a GitHub install link:
+
+```bash
+copilot plugin install "ghapp://air/install?..."
+```
+
+Use the exact link provided by GitHub rather than constructing one by hand.
 
 ### From VS Code
 
