@@ -340,13 +340,7 @@ You can connect to and steer a running coding agent session from a local Copilot
 
 ### Starting a Remote-Controlled Session
 
-Launch a session that registers with GitHub for remote access:
-
-```bash
-copilot --remote
-```
-
-Or open a remote control tab from inside an existing session, and check or toggle its state:
+From inside a Copilot CLI session, open a remote control tab and check or toggle its state:
 
 ```
 /remote             # show current remote control status
@@ -374,6 +368,8 @@ Since v1.0.47, `--resume` also surfaces **cloud agent sessions that haven't yet 
 | Mid-course corrections | Redirect the agent if it heads in the wrong direction |
 | Interactive refinement | Provide clarification and feedback as the agent works |
 | No PR required | You can steer tasks that haven't yet opened a pull request |
+
+> **Note**: The legacy `--remote` and `--no-remote` startup flags were retired in Copilot CLI v1.0.103 in favor of clearer hosting/connection flags. Run `copilot --help` to see the current launch options, or use `/remote on` from inside a session.
 
 > **Note**: Remote control replaces the earlier "steering" feature. If you see references to steering in older documentation, remote control is the updated equivalent.
 
