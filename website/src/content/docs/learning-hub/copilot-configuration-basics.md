@@ -3,7 +3,7 @@ title: 'Copilot Configuration Basics'
 description: 'Learn how to configure GitHub Copilot at user, workspace, and repository levels to optimize your AI-assisted development experience.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-09-07
+lastUpdated: 2026-10-27
 estimatedReadingTime: '10 minutes'
 tags:
   - configuration
@@ -784,6 +784,10 @@ The `/permissions` command *(v1.0.78+)* opens an interactive picker for switchin
 ```
 
 Use `/permissions` as a quick mode switcher when you want to change how the agent handles tool approvals without remembering individual command names.
+
+> **Assisted Permissions (v1.0.104+)**: Assisted Permissions, where an LLM judge helps decide whether a tool call should be approved, no longer requires enabling experimental mode. Since v1.0.101 you can also set `assistedApprovalInstructions` in your settings to guide the judge's confirmation decisions (for example, "always ask before touching files under `infra/`"). Extension capability requests are not judged by Assisted Permissions and always require explicit approval.
+
+> **Autopilot and background tasks (v1.0.104+)**: Interactive and SDK autopilot sessions now keep waiting for attached background tasks instead of stopping after `COPILOT_TASK_WAIT_TIMEOUT_SECONDS`. Non-interactive `-p --autopilot` runs still honor that timeout.
 
 The `--effort` flag (shorthand for `--reasoning-effort`) controls how much computational reasoning the model applies to a request:
 
