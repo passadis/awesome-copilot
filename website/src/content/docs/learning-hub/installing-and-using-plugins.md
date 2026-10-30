@@ -3,7 +3,7 @@ title: 'Installing and Using Plugins'
 description: 'Learn how to find, install, and manage plugins that extend GitHub Copilot CLI with reusable agents, skills, hooks, and integrations.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-09-01
+lastUpdated: 2026-10-30
 relatedArticles:
   - ./building-custom-agents.md
   - ./creating-effective-skills.md
@@ -139,6 +139,8 @@ Or from a local path:
 ```bash
 copilot plugin marketplace add /path/to/local-marketplace
 ```
+
+*(v1.0.102+)* Marketplace entries can also use `git-subdir` sources, which point a plugin at a subdirectory of a git repository, and may include long plugin descriptions.
 
 ### Sharing Marketplace Registrations Across a Team
 
