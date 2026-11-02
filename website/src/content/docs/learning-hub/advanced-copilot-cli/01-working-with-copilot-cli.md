@@ -3,7 +3,7 @@ title: '01 · Working with Copilot CLI'
 description: 'Understand the agent model, how the Copilot CLI harness works under the hood, and the everyday mechanics of models and permissions.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-08-26
+lastUpdated: 2026-11-02
 ---
 
 # Module 1 — Working with Copilot CLI
@@ -150,6 +150,9 @@ Copilot offers many [options to control permissions][permissions-docs], includin
 | — | `--allow-all-tools` | Auto-approve every tool call (required for programmatic / scripted runs), but paths must still be approved. |
 | — | `--allow-all-paths` | Skip path verification and allow access to any file location. |
 | — | `--allow-url=URL` / `--deny-url=URL` | Allow or block specific URLs/domains for `web_fetch` and shell network calls. |
+
+> [!TIP]
+> **Assisted Permissions** (available without experimental mode since v1.0.104) uses a judge to help decide on confirmation prompts. Use the `assistedApprovalInstructions` setting (v1.0.101+) to guide those decisions.
 
 > [!WARNING]
 > Enabling all tools (commonly referred to as **YOLO mode**) gives Copilot unrestricted ability to read, modify, and execute files, run shell commands, and call out to MCP servers without asking. A misinterpreted prompt or a prompt-injection attack via fetched content can result in data loss, leaked secrets, or destructive commands. Only use YOLO mode in [trusted, sandboxed environments][risk-mitigation] such as a container or disposable VM, and never in a directory containing credentials or unreviewed code.

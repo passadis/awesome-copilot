@@ -3,7 +3,7 @@ title: 'Installing and Using Plugins'
 description: 'Learn how to find, install, and manage plugins that extend GitHub Copilot CLI with reusable agents, skills, hooks, and integrations.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-09-01
+lastUpdated: 2026-11-02
 relatedArticles:
   - ./building-custom-agents.md
   - ./creating-effective-skills.md
@@ -194,6 +194,8 @@ Pinning to a SHA guarantees that everyone on the team installs plugins from exac
 - **Reproducible CI environments** — ensure builds always use the same plugin versions
 - **Change control** — review and approve plugin updates before rolling them out team-wide
 - **Stability** — prevent breaking changes in upstream marketplaces from impacting your team without notice
+
+*(v1.0.102+)* Plugin marketplaces also accept `git-subdir` sources, so a plugin can live in a subdirectory of a Git repository, and long plugin descriptions are supported. Team-assigned plugins can be installed from Team-defined GitHub marketplaces *(v1.0.101+)*.
 
 ## Installing Plugins
 
