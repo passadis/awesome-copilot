@@ -481,6 +481,8 @@ The `/settings` command (v1.0.61+) opens an interactive dialog to browse and edi
 
 The settings dialog supports search — type to filter settings by name. Changes take effect immediately.
 
+*(v1.0.106+)* `/settings` opens the unified dashboard for all users, and its **global search** covers both settings and local resources, so you can jump to a setting or a local resource from one search box.
+
 *(v1.0.70+)* The `/settings` command and the `/model` command both support **`--repo` and `--local` flags** for explicitly scoping which layer of settings you want to view or edit:
 
 ```
