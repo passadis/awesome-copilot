@@ -3,7 +3,7 @@ title: 'Copilot Configuration Basics'
 description: 'Learn how to configure GitHub Copilot at user, workspace, and repository levels to optimize your AI-assisted development experience.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-09-07
+lastUpdated: 2026-11-06
 estimatedReadingTime: '10 minutes'
 tags:
   - configuration
@@ -490,6 +490,8 @@ The settings dialog supports search — type to filter settings by name. Changes
 /model --local      # view/edit your personal model preference
 ```
 
+*(v1.0.107+)* `/settings` opens a unified dashboard for all users and adds **global search** across settings and local resources. The `/code` command opens the current session in VS Code, and `/agent` now shows each agent's selection ID when several agents share a display name.
+
 These flags mirror the **Repo** and **Repo (local)** scope tabs available in the `/settings` dashboard (v1.0.71+), making it easier to manage per-repository vs. user-global configuration without ambiguity. In v1.0.71+, the `/settings` dashboard also shows **Repo** and **Repo (local)** tabs alongside the existing user-level view, giving you a unified place to see which settings are applied at each layer.
 
 GitHub Copilot CLI has two commands for managing session state, with distinct behaviours:
@@ -879,6 +881,8 @@ copilot --config-dir ~/.my-copilot-config
 ```
 
 Set `COPILOT_HOME` in your shell profile to use a custom config directory across all sessions. This is especially useful when running multiple Copilot configurations for different projects or teams.
+
+*(v1.0.107+)* The `COPILOT_SESSION_CWD` environment variable is available when launching and expanding LSP and local MCP server configs, so those configs can refer to the directory the session started in. A new **Sandbox extensions** setting runs extension processes inside the sandbox, and plugin rules with `alwaysApply: false` now stay out of the prompt until you enable them in `/instructions`.
 
 ### Shell Completion
 
