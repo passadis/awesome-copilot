@@ -3,7 +3,7 @@ title: 'Copilot Configuration Basics'
 description: 'Learn how to configure GitHub Copilot at user, workspace, and repository levels to optimize your AI-assisted development experience.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-09-07
+lastUpdated: 2026-11-07
 estimatedReadingTime: '10 minutes'
 tags:
   - configuration
@@ -840,6 +840,12 @@ These flags apply only to the current invocation — your persisted sandbox pref
 **`allowDevToolAccess` sandbox setting** *(v1.0.78+ as `allowDevToolCaches`, renamed to `allowDevToolAccess` in v1.0.79 — breaking change)*: When the sandbox is enabled, this setting grants sandboxed builds access to toolchain caches, registries, config files, and installs (npm cache, pip cache, Go module cache, etc.) so builds work without extra setup. Set it to `false` in `/settings` to opt out if you want a stricter sandbox that blocks all toolchain access.
 
 > **Breaking change (v1.0.79)**: The setting was renamed from `allowDevToolCaches` to `allowDevToolAccess`. If you previously set `allowDevToolCaches` to `false` to opt out, update your `settings.json` to use `allowDevToolAccess` — the old key is silently ignored.
+
+**Sandbox extensions setting** *(v1.0.107+)*: Turn on **Sandbox extensions** to run extension processes inside the sandbox rather than directly on your machine. Sandboxed local MCP servers also respect relative filesystem permissions from the session directory and start correctly with a relative `cwd`.
+
+**`COPILOT_SESSION_CWD`** *(v1.0.107+)*: Local MCP server and LSP configs can use `COPILOT_SESSION_CWD` to refer to the directory the session was launched from.
+
+**Settings and session shortcuts** *(v1.0.107+)*: `/settings` opens a unified dashboard with global search across settings and local resources, and `/code` opens the current session in VS Code.
 
 **Sandbox auth settings** *(v1.0.79-8+, breaking change)*: The `/sandbox` configuration dialog now groups git, `gh`, and (on macOS) keychain settings under a new **Auth** tab. The underlying settings keys moved from `sandbox.gitAuth`/`sandbox.ghAuth` to `sandbox.auth.git`/`sandbox.auth.gh`. There is no automatic migration — the old keys are silently ignored in settings files, and SDK requests that still send them are rejected as invalid. Update any saved configuration to the new key names.
 
