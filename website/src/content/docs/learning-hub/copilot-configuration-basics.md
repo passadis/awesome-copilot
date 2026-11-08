@@ -3,7 +3,7 @@ title: 'Copilot Configuration Basics'
 description: 'Learn how to configure GitHub Copilot at user, workspace, and repository levels to optimize your AI-assisted development experience.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-09-07
+lastUpdated: 2026-11-08
 estimatedReadingTime: '10 minutes'
 tags:
   - configuration
@@ -903,6 +903,17 @@ echo 'source ~/.copilot-completion.bash' >> ~/.bashrc
 ```
 
 > **Tip**: Reload your shell (`source ~/.bashrc` or open a new terminal) after adding the completion script for changes to take effect.
+
+## Copilot CLI Settings and Session Controls
+
+Recent Copilot CLI releases (see the [CLI changelog](https://github.com/github/copilot-cli/blob/main/changelog.md)) added several configuration-related capabilities:
+
+- **`/settings`** opens a unified dashboard with global search across settings and local resources. `copilot help config` lists every setting the CLI offers.
+- **`/code`** opens the current session in VS Code.
+- **`COPILOT_SESSION_CWD`** can be used when launching, and in LSP and local MCP server configs, to refer to the session's working directory.
+- **Sandbox extensions** is a setting that runs extension processes inside the sandbox.
+- **Plugin rules with `alwaysApply: false`** stay out of the prompt until you enable them in `/instructions`.
+- **Repository hook files** under `.github/hooks` that are unreadable or invalid are now reported at startup, with the file and reason.
 
 ## Common Questions
 
