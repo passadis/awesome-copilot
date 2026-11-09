@@ -751,6 +751,15 @@ The `/keep-alive` command prevents the system from sleeping while Copilot CLI is
 
 > **Note**: `/keep-alive` was previously an experimental feature. As of v1.0.36, it is available without enabling experimental mode.
 
+**Recent changes (v1.0.108)**:
+
+- `/index` commands manage code indexing, and managed shared tgrep indexing is now on by default for eligible repositories to speed up semantic code search.
+- Interactive sessions pass local MCP server environment values literally. Use `${NAME}` to reference a variable from your host environment.
+- `disabledSkills`, `skills.disable` and `skills.enable` now match skill names in any letter case.
+- `/experimental on|off` and `/theme <mode>` are deprecated in favour of `/settings`.
+- A warning appears when a selected custom agent's configured skills are missing or can't be loaded.
+- Ctrl+C now stops a running `/compact`, like Esc Esc.
+
 The `/allow-all` command (also accessible as `/yolo`) enables autopilot mode, where the agent runs all tools without asking for confirmation. It now supports `on`, `off`, and `show` subcommands:
 
 ```
