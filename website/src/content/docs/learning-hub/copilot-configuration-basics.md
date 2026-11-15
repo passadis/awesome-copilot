@@ -459,6 +459,8 @@ The model picker opens in a **full-screen view** with inline reasoning effort ad
 
 **Model family aliases** (v1.0.64+): Instead of typing a full model name, you can use short family aliases in the model setting: `opus`, `sonnet`, `haiku` (Anthropic), and `gpt`, `gemini` (Google/OpenAI). The CLI resolves the alias to the latest available model in that family. This is especially useful in scripts or configuration files where you want to track the best model in a family without hardcoding a version string. Recent models available include **Claude Opus 5** (v1.0.75+), the latest in Anthropic's Opus family for the most demanding tasks, **Grok 4.5** (v1.0.76+) from xAI, **Gemini 3.7 Flash** (v1.0.81+), and **Claude Fable 5.1** (v1.0.83+). **Grok 4.6** (v1.0.81+) also gains support for the `xhigh` reasoning effort level, one step above `high`, for the most demanding reasoning tasks. The `/model picker` also periodically retires older models no longer worth recommending — a recent cleanup removed several deprecated Claude and Gemini entries (v1.0.83+), so don't be surprised if a model you previously pinned disappears from the list.
 
+**Newer models** *(v1.0.107–v1.0.109)*: **GPT-6.1 Terra** (v1.0.107+, when available to your account) and **Claude Fable 5.2** (v1.0.109+) appear under **New models** in the picker.
+
 **Model fallback lists** *(v1.0.83+)*: Custom agents can set `model` to a list of several models instead of a single name. Copilot tries each one in order until it finds one available to your account — useful when your preferred model is temporarily rate-limited or not enrolled. Pair this with `model-policy: required` to keep the agent restricted to that list even if you try to switch models mid-session. See [Building Custom Agents](../building-custom-agents/) for the frontmatter syntax.
 
 **Plan mode model** *(v1.0.74+)*: When using plan mode (which blocks file mutations and keeps changes in a planning phase), you can assign a *separate* model specifically for planning — different from your regular session model. This lets you use a fast, cost-effective model for plan drafting while keeping a more capable model on standby for the implementation phase:
@@ -516,6 +518,15 @@ You can also name a session at startup with the `--name` flag, and resume it by 
 copilot --name "auth-refactor"          # start a session with a given name
 copilot --resume="auth-refactor"        # resume that session by name
 ```
+
+**Recent additions** *(v1.0.107–v1.0.111)*:
+
+- `/code` opens the current session in VS Code.
+- `/index` commands manage code indexing; managed shared tgrep indexing is enabled by default for eligible repositories (v1.0.108+).
+- `COPILOT_SESSION_CWD` is available when launching and expanding LSP and local MCP server configs, so they can follow the session's working directory.
+- Sandbox settings gained a **Sandbox extensions** option to run extension processes inside the sandbox, glob patterns in filesystem deny rules (v1.0.107+), and IPv4/IPv6 CIDR support in host allow and deny rules (v1.0.109+).
+- Enterprise-managed Shell, Bash, and PowerShell permission rules now support regular expressions (v1.0.111+).
+- `--host-allow-session-creation` lets remote clients create sessions on a CLI host for a single launch without changing saved settings (v1.0.111+).
 
 The `/session delete` command removes sessions you no longer need:
 
