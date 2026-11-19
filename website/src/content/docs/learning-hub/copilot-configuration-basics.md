@@ -3,7 +3,7 @@ title: 'Copilot Configuration Basics'
 description: 'Learn how to configure GitHub Copilot at user, workspace, and repository levels to optimize your AI-assisted development experience.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-09-07
+lastUpdated: 2026-11-19
 estimatedReadingTime: '10 minutes'
 tags:
   - configuration
@@ -724,6 +724,14 @@ The `/usage` command displays session metrics such as the number of tokens consu
 ```
 /limits predict
 ```
+
+> **Session limits and `/compact` (v1.0.110+)**: `/compact` now respects the session AI credit limit, so it cannot incur additional charges once the limit is reached. In v1.0.114, credits used in earlier runs of a session also count toward the limit when you resume it.
+
+**Remote session hosting (v1.0.111+)**: Launch the CLI with `--host-allow-session-creation` to let remote clients create new sessions on that CLI host for a single launch, without changing your saved settings. Sessions started with `/new` or from the Sessions tab can also be controlled from GitHub when remote sessions are enabled.
+
+**Enterprise permission rules and Browser Use**: Enterprise-managed Shell, Bash, and PowerShell permission rules support regular expressions (v1.0.111+). Administrators can disable the built-in Browser Use tool with the managed setting `features.browserUse`, including in running sessions (v1.0.113+).
+
+**Trust warnings for MCP configuration (v1.0.112+)**: When a workspace MCP configuration is skipped because the folder is not trusted, the CLI and `copilot mcp` inspection commands now say so and name the folder to trust.
 
 The `/compact` command summarizes the conversation history to free up context window space while preserving the thread of the conversation. Use it when your context is getting full but you do not want to start a fresh session:
 
