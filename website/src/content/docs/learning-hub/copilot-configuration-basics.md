@@ -785,6 +785,8 @@ The `/permissions` command *(v1.0.78+)* opens an interactive picker for switchin
 
 Use `/permissions` as a quick mode switcher when you want to change how the agent handles tool approvals without remembering individual command names.
 
+> **Assisted Permissions (auto mode)**: Instead of prompting for every tool call, a review model judges each request and approves routine ones, asking you only when it is unsure. Recent releases (v1.0.115 pre-releases) make it more resilient: the reviewer can fall back to another model if the first stalls or fails, an approval you grant once is reused for identical requests in the same session, and approving a request also clears queued prompts it covers. Use the `assistedApprovalInstructions` setting to guide the reviewer's decisions, and note that administrators can disable Assisted Permissions by policy. In Autopilot, requests the reviewer cannot approve are skipped and reported rather than stopping the run.
+
 The `--effort` flag (shorthand for `--reasoning-effort`) controls how much computational reasoning the model applies to a request:
 
 ```bash
