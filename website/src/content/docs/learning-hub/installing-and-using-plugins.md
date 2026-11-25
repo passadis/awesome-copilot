@@ -323,6 +323,8 @@ copilot plugin install /path/to/openspec-plugin
 
 The CLI reads the manifest, discovers the bundled agents, skills, and MCP server configuration, and integrates them the same way it handles native Copilot plugins.
 
+> **Duplicate endpoint warning (v1.0.116+)**: If a plugin's MCP server and a standalone MCP server you configured connect to the same endpoint, Copilot CLI warns you and shows how to disable one of them in `/mcp`.
+
 ### `mcp.json` Configuration
 
 The Agent Plugins standard also standardizes how MCP server configuration is bundled in plugins. A plugin can now include an `mcp.json` file at its root to declare MCP servers it requires — using the same format as `.mcp.json` or `.github/mcp.json` in your repository. When you install such a plugin, its MCP server configuration is automatically merged into your active server list.
