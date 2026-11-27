@@ -251,6 +251,8 @@ Guide users through creating, reviewing, and deploying infrastructure code.
 
 **When to use**: Create agents for domain-specific tasks like infrastructure management, API design, or security reviews.
 
+> **Tool exposure (CLI v1.0.117+)**: Custom agents can opt in to tools explicitly, and subagents now respect the tool list in their custom agent file even when the file has no prompt body.
+
 ### Reusable Skills
 
 Skills are self-contained folders that package reusable capabilities. Store them in `.github/skills/`.
@@ -846,6 +848,8 @@ These flags apply only to the current invocation — your persisted sandbox pref
 **`worktreeBaseRef` setting** *(v1.0.79-8+)*: Controls whether `/worktree`, `/worktree new`, and the `--worktree` startup flag create the new worktree from `HEAD` or from the remote default branch. All three now default to `HEAD`; previously `--worktree` defaulted to starting from the remote default branch. Set this in `/settings` if you want worktrees to branch from the remote default instead.
 
 > **Breaking change — sandbox network isolation (v1.0.83+)**: On macOS and Linux, sandboxed commands can no longer reach services running on your own machine, including a server the sandboxed command itself starts on `127.0.0.1`. This means test suites that bind a local port will fail inside the sandbox. Turn on **Allow local network** in `/sandbox` to restore access to localhost. On Linux, sandboxing also now requires `slirp4netns`, `nsenter`, `iptables`, `ip6tables`, `iptables-restore`, and `ip6tables-restore` on `PATH` — install these if sandboxed commands start failing to launch. Additionally, Linux sandboxes now restrict network egress to the configured HTTP(S) proxy when one is set; this proxy mode requires `slirp4netns`, `util-linux` 2.35+, `iptables`, and `/dev/net/tun` access.
+
+**Custom CA certificates and environment variables for sandboxed commands** *(v1.0.116–v1.0.117)*: Set `sandbox.userPolicy.network.extraCaCertificates` in user or managed settings to trust custom CA certificates for sandboxed commands behind a TLS-intercepting proxy. The `env` setting defines environment variables for every process Copilot starts (shell commands, local LSP and MCP servers, hooks, and extensions), with or without the sandbox.
 
 The `--attachment` flag (available in prompt mode, `-p`) lets you attach files — images or native documents — to the initial prompt in non-interactive mode:
 
